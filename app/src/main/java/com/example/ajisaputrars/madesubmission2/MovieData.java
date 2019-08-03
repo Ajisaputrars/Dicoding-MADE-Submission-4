@@ -1,5 +1,7 @@
 package com.example.ajisaputrars.madesubmission2;
 
+import com.example.ajisaputrars.madesubmission2.model.movie.Movie;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 

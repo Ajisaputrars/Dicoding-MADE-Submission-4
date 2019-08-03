@@ -9,7 +9,6 @@
         android:layout_width="100dp"
         android:layout_height="150dp"
         android:scaleType="fitXY"
-        android:background="@drawable/poster_sample"
         android:contentDescription="@string/tv_show_image_description" />
     <TextView
         android:id="@+id/txt_tv_show_name"

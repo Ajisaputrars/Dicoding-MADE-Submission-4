@@ -1,7 +1,11 @@
-package com.example.ajisaputrars.madesubmission2;
+package com.example.ajisaputrars.madesubmission2.model.movie;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+
+import org.json.JSONObject;
+
+import java.text.DecimalFormat;
 
 public class Movie implements Parcelable {
     private int id;
@@ -11,6 +15,25 @@ public class Movie implements Parcelable {
     private double vote_average;
     private int poster_path;
     private int backdrop_path;
+
+    private String poster_path_string;
+    private String backdrop_path_string;
+
+    public String getPoster_path_string() {
+        return poster_path_string;
+    }
+
+    public void setPoster_path_string(String poster_path_string) {
+        this.poster_path_string = poster_path_string;
+    }
+
+    public String getBackdrop_path_string() {
+        return backdrop_path_string;
+    }
+
+    public void setBackdrop_path_string(String backdrop_path_string) {
+        this.backdrop_path_string = backdrop_path_string;
+    }
 
     public int getPoster_path() {
         return poster_path;
@@ -81,6 +104,7 @@ public class Movie implements Parcelable {
         dest.writeString(this.release_date);
         dest.writeDouble(this.vote_average);
         dest.writeInt(this.poster_path);
+        dest.writeString(this.poster_path_string);
     }
 
     public Movie() {
@@ -93,6 +117,7 @@ public class Movie implements Parcelable {
         this.release_date = in.readString();
         this.vote_average = in.readDouble();
         this.poster_path = in.readInt();
+        this.poster_path_string = in.readString();
     }
 
     public static final Creator<Movie> CREATOR = new Creator<Movie>() {
@@ -106,4 +131,26 @@ public class Movie implements Parcelable {
             return new Movie[size];
         }
     };
+
+    public Movie (JSONObject object) {
+        try {
+            int id = object.getInt("id");
+            String title = object.getString("title");
+            String overview = object.getString("overview");
+            String release_date = object.getString("release_date");
+            Double vote_average = object.getDouble("vote_average");
+            String poster_path = "https://image.tmdb.org/t/p/w342" + object.getString("poster_path");
+            String backdrop_path = "https://image.tmdb.org/t/p/w342" + object.getString("backdrop_path");
+
+            this.id = id;
+            this.title = title;
+            this.overview = overview;
+            this.release_date = release_date;
+            this.vote_average = vote_average;
+            this.poster_path_string = poster_path;
+            this.backdrop_path_string = backdrop_path;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

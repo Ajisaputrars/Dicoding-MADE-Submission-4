@@ -1,9 +1,10 @@
-package com.example.ajisaputrars.madesubmission2;
+package com.example.ajisaputrars.madesubmission2.adapter;
 
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.ajisaputrars.madesubmission2.model.movie.Movie;
+import com.example.ajisaputrars.madesubmission2.MovieDetailActivity;
+import com.example.ajisaputrars.madesubmission2.R;
+import com.example.ajisaputrars.madesubmission2.model.movie.ResultsItemMovie;
 
 import java.util.ArrayList;
 
@@ -27,6 +32,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.RecycleViewH
         this.movies = movies;
     }
 
+    public void setData(ArrayList<Movie> items) {
+        if (movies.size() > 0) {
+            movies.clear();
+        }
+        movies.addAll(items);
+        notifyDataSetChanged();
+    }
 
     public MovieAdapter(Context context) {
         this.context = context;
@@ -43,14 +55,16 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.RecycleViewH
     public void onBindViewHolder(@NonNull final RecycleViewHolder recycleViewHolder, final int i) {
         recycleViewHolder.tvTitle.setText(movies.get(i).getTitle());
         recycleViewHolder.tvOverview.setText(movies.get(i).getOverview());
-        Glide.with(context).load(movies.get(i).getPoster_path())
+        Glide.with(context).load(movies.get(i).getPoster_path_string())
                 .into(recycleViewHolder.imgPhoto);
+        Log.d("MovAd1 PosterPathString", "Linknya adalah = " + movies.get(i).getPoster_path_string());
 
         recycleViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, MovieDetailActivity.class);
                 intent.putExtra(MovieDetailActivity.DETAIL_MOVIE_EXTRA, getMovies().get(i));
+                Log.d("MovAd2 PosterPathString", "Linknya adalah = " + getMovies().get(i).getPoster_path_string());
                 context.startActivity(intent);
             }
         });

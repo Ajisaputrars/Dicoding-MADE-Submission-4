@@ -2,10 +2,12 @@ package com.example.ajisaputrars.madesubmission2;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.ajisaputrars.madesubmission2.model.tvShow.TvShow;
 
 public class TvShowDetailActivity extends AppCompatActivity {
 
@@ -39,6 +41,7 @@ public class TvShowDetailActivity extends AppCompatActivity {
         txtVoteAverage.setText(String.valueOf(tvShow.getVote_average()));
         txtDate.setText(tvShow.getFirst_air_date());
         txtOverview.setText(tvShow.getOverview());
-        Glide.with(getApplicationContext()).load(tvShow.getPoster_path()).into(imgPoster);
+        Glide.with(getApplicationContext()).load(tvShow.getPoster_path_string()).into(imgPoster);
+        Log.d("DtlTSh PosterPathString", "Linknya adalah = " + tvShow.getPoster_path_string());
     }
 }

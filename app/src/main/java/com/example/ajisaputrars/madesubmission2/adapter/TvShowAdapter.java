@@ -1,9 +1,10 @@
-package com.example.ajisaputrars.madesubmission2;
+package com.example.ajisaputrars.madesubmission2.adapter;
 
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.ajisaputrars.madesubmission2.R;
+import com.example.ajisaputrars.madesubmission2.model.movie.Movie;
+import com.example.ajisaputrars.madesubmission2.model.tvShow.TvShow;
+import com.example.ajisaputrars.madesubmission2.TvShowDetailActivity;
 
 import java.util.ArrayList;
 
@@ -31,6 +36,14 @@ public class TvShowAdapter extends RecyclerView.Adapter<TvShowAdapter.RecycleVie
         this.tvShows = tvShows;
     }
 
+    public void setData(ArrayList<TvShow> items) {
+        if (tvShows.size() > 0) {
+            tvShows.clear();
+        }
+        tvShows.addAll(items);
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public RecycleViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -42,7 +55,7 @@ public class TvShowAdapter extends RecyclerView.Adapter<TvShowAdapter.RecycleVie
     public void onBindViewHolder(@NonNull RecycleViewHolder recycleViewHolder, final int i) {
         recycleViewHolder.tvTitle.setText(tvShows.get(i).getName());
         recycleViewHolder.tvOverview.setText(tvShows.get(i).getOverview());
-        Glide.with(context).load(tvShows.get(i).getPoster_path())
+        Glide.with(context).load(tvShows.get(i).getPoster_path_string())
                 .into(recycleViewHolder.imgPhoto);
 
         recycleViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -50,6 +63,7 @@ public class TvShowAdapter extends RecyclerView.Adapter<TvShowAdapter.RecycleVie
             public void onClick(View v) {
                 Intent intent = new Intent(context, TvShowDetailActivity.class);
                 intent.putExtra(TvShowDetailActivity.DETAIL_TV_SHOW_EXTRA, getTvShows().get(i));
+                Log.d("Path TvShowVM ke" + i, getTvShows().get(i).getPoster_path_string());
                 context.startActivity(intent);
             }
         });

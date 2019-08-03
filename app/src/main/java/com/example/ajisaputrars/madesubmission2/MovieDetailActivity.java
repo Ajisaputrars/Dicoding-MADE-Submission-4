@@ -2,10 +2,12 @@ package com.example.ajisaputrars.madesubmission2;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.ajisaputrars.madesubmission2.model.movie.Movie;
 
 public class MovieDetailActivity extends AppCompatActivity {
 
@@ -39,6 +41,8 @@ public class MovieDetailActivity extends AppCompatActivity {
         txtVoteAverage.setText(String.valueOf(movie.getVote_average()));
         txtDate.setText(movie.getRelease_date());
         txtOverview.setText(movie.getOverview());
-        Glide.with(getApplicationContext()).load(movie.getPoster_path()).into(imgPoster);
+        Glide.with(getApplicationContext()).load(movie.getPoster_path_string()).into(imgPoster);
+        Log.d("DtlMov PosterPathString", "Linknya adalah = " + movie.getPoster_path_string());
+        Log.d("DtlMov PosterPath", "Linknya adalah = " + movie.getPoster_path());
     }
 }
