@@ -1,9 +1,7 @@
 package com.example.ajisaputrars.madesubmission2;
 
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.provider.Settings;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -14,21 +12,16 @@ import android.support.annotation.NonNull;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.ajisaputrars.madesubmission2.viewmodel.MovieViewModel;
-
 public class MainActivity extends AppCompatActivity {
-
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
     private MovieFragment movieFragment;
     private TvShowFragment tvShowFragment;
-
     private final String STATE_TITLE = "state_string";
     private final String STATE_LIST = "state_list";
     private final String STATE_MODE = "state_mode";
     private int mode = 0 ;
 
-//    private MovieViewModel movieViewModel;
 
 
     @Override
@@ -38,10 +31,6 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
-//        movieViewModel = ViewModelProviders.of(this).get(MovieViewModel.class);
-
-
         fragmentManager = getSupportFragmentManager();
         movieFragment = new MovieFragment();
         tvShowFragment = new TvShowFragment();
@@ -52,8 +41,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-//        outState.putString(STATE_TITLE, title);
-//        outState.putParcelableArrayList(STATE_LIST, list);
         outState.putInt(STATE_MODE, mode);
     }
 

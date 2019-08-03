@@ -5,7 +5,7 @@ import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.util.Log;
 
-import com.example.ajisaputrars.madesubmission2.model.movie.Movie;
+import com.example.ajisaputrars.madesubmission2.Constant;
 import com.example.ajisaputrars.madesubmission2.model.tvShow.TvShow;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -18,17 +18,19 @@ import java.util.ArrayList;
 import cz.msebera.android.httpclient.Header;
 
 public class TvShowViewModel extends ViewModel {
-    private static final String API_KEY = "ISI SESUAI API ANDA";
-    private static final String URLFULL = "https://api.themoviedb.org/3/discover/tv?api_key=9351b653885866a95fcef04c4f0c7426&language=en-US";
-
+//    private static final String URLFULL = "https://api.themoviedb.org/3/discover/tv?api_key=9351b653885866a95fcef04c4f0c7426&language=en-US";
+    private static final String URLFULL = Constant.URL_MOVIE_AND_TV_SHOW_BASE
+            + Constant.URL_TV_SHOW_DISCOVER
+            + "?api_key="
+            + Constant.API_KEY +
+            "&language=en-US";
     private MutableLiveData<ArrayList<TvShow>> listTvShows = new MutableLiveData<>();
 
     public void setListTvShows(final String cities) {
         final ArrayList<TvShow> listItems = new ArrayList<>();
 
         AsyncHttpClient client = new AsyncHttpClient();
-        String url = URLFULL; //"https://api.openweathermap.org/data/2.5/group?id=" + cities + "&units=metric&appid=" + API_KEY;
-
+        String url = URLFULL;
         client.get(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {

@@ -2,7 +2,6 @@ package com.example.ajisaputrars.madesubmission2.model.tvShow;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
 import org.json.JSONObject;
 
 public class TvShow implements Parcelable {
@@ -13,7 +12,6 @@ public class TvShow implements Parcelable {
     private String first_air_date;
     private int backdrop_path;
     private String name;
-
     private String poster_path_string;
     private String backdrop_path_string;
 
@@ -141,7 +139,6 @@ public class TvShow implements Parcelable {
             Double vote_average = object.getDouble("vote_average");
             String poster_path = "https://image.tmdb.org/t/p/w342" + object.getString("poster_path");
             String backdrop_path = "https://image.tmdb.org/t/p/w342" + object.getString("backdrop_path");
-
             this.id = id;
             this.name = name;
             this.overview = overview;

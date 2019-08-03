@@ -4,16 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
 import com.example.ajisaputrars.madesubmission2.R;
-import com.example.ajisaputrars.madesubmission2.model.movie.Movie;
 import com.example.ajisaputrars.madesubmission2.model.tvShow.TvShow;
 import com.example.ajisaputrars.madesubmission2.TvShowDetailActivity;
 
@@ -37,9 +34,7 @@ public class TvShowAdapter extends RecyclerView.Adapter<TvShowAdapter.RecycleVie
     }
 
     public void setData(ArrayList<TvShow> items) {
-        if (tvShows.size() > 0) {
-            tvShows.clear();
-        }
+        tvShows.clear();
         tvShows.addAll(items);
         notifyDataSetChanged();
     }
@@ -63,7 +58,6 @@ public class TvShowAdapter extends RecyclerView.Adapter<TvShowAdapter.RecycleVie
             public void onClick(View v) {
                 Intent intent = new Intent(context, TvShowDetailActivity.class);
                 intent.putExtra(TvShowDetailActivity.DETAIL_TV_SHOW_EXTRA, getTvShows().get(i));
-                Log.d("Path TvShowVM ke" + i, getTvShows().get(i).getPoster_path_string());
                 context.startActivity(intent);
             }
         });

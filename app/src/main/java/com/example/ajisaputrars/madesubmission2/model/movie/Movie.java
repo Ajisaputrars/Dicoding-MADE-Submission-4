@@ -3,9 +3,9 @@ package com.example.ajisaputrars.madesubmission2.model.movie;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import org.json.JSONObject;
+import com.example.ajisaputrars.madesubmission2.Constant;
 
-import java.text.DecimalFormat;
+import org.json.JSONObject;
 
 public class Movie implements Parcelable {
     private int id;
@@ -15,7 +15,6 @@ public class Movie implements Parcelable {
     private double vote_average;
     private int poster_path;
     private int backdrop_path;
-
     private String poster_path_string;
     private String backdrop_path_string;
 
@@ -139,9 +138,8 @@ public class Movie implements Parcelable {
             String overview = object.getString("overview");
             String release_date = object.getString("release_date");
             Double vote_average = object.getDouble("vote_average");
-            String poster_path = "https://image.tmdb.org/t/p/w342" + object.getString("poster_path");
-            String backdrop_path = "https://image.tmdb.org/t/p/w342" + object.getString("backdrop_path");
-
+            String poster_path = Constant.URL_IMAGE_BASE + object.getString("poster_path");
+            String backdrop_path = Constant.URL_IMAGE_BASE + object.getString("backdrop_path");
             this.id = id;
             this.title = title;
             this.overview = overview;
