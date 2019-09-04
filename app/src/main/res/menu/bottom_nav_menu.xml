@@ -10,4 +10,14 @@
         android:id="@+id/navigation_tv_show"
         android:icon="@drawable/television"
         android:title="@string/title_tv_show" />
+
+    <item
+        android:id="@+id/navigation_favorite_movie"
+        android:icon="@drawable/ic_added_to_favorites"
+        android:title="@string/title_favorite_movie" />
+
+    <item
+        android:id="@+id/navigation_favorite_tv_show"
+        android:icon="@drawable/ic_added_to_favorites"
+        android:title="@string/title_favorite_tv_show" />
 </menu>

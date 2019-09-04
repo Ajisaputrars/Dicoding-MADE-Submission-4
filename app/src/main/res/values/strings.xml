@@ -17,4 +17,7 @@
     <string name="tv_show_image_description">TV Show image</string>
 
     <string name="loading_text">Loading</string>
+    <string name="add_favorite">favorite</string>
+    <string name="title_favorite_movie">Fav. Movie</string>
+    <string name="title_favorite_tv_show">Fav. TV</string>
 </resources>

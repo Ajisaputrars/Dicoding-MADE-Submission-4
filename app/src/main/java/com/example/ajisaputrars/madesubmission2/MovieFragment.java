@@ -45,6 +45,8 @@ public class MovieFragment extends Fragment {
 
         if (movies.size() <= 0) {
             progressDialog.show();
+        } else {
+            progressDialog.dismiss();
         }
 
         movieViewModel = ViewModelProviders.of(this).get(MovieViewModel.class);
@@ -57,8 +59,6 @@ public class MovieFragment extends Fragment {
         adapter = new MovieAdapter(view.getContext());
         adapter.setMovies(movies);
         rvFragmentMovies.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
-
     }
 
     private Observer<ArrayList<Movie>> getMovie = new Observer<ArrayList<Movie>>() {

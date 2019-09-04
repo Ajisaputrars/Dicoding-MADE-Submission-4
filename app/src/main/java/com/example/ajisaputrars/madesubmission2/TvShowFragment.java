@@ -29,6 +29,7 @@ public class TvShowFragment extends Fragment {
     TvShowAdapter adapter;
     ProgressDialog progressDialog;
 
+    TvShowViewModel tvShowViewModel;
 
     public TvShowFragment() {
 
@@ -48,9 +49,11 @@ public class TvShowFragment extends Fragment {
 
         if (tvShows.size() <= 0) {
             progressDialog.show();
+        } else {
+            progressDialog.dismiss();
         }
 
-        TvShowViewModel tvShowViewModel = ViewModelProviders.of(this).get(TvShowViewModel.class);
+        tvShowViewModel = ViewModelProviders.of(this).get(TvShowViewModel.class);
         tvShowViewModel.getTvShows().observe(this, getTvShow);
         tvShowViewModel.setListTvShows("");
 
@@ -65,8 +68,6 @@ public class TvShowFragment extends Fragment {
     private Observer<ArrayList<TvShow>> getTvShow = new Observer<ArrayList<TvShow>>() {
         @Override
         public void onChanged(ArrayList<TvShow> tvShowItems) {
-            progressDialog.show();
-            Log.d("onChange Observer", "TvShowFragment Jalan");
             if (tvShowItems != null) {
                 tvShows = tvShowItems;
                 adapter.setData(tvShows);
