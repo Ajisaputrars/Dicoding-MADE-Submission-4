@@ -55,8 +55,13 @@ public class MainActivity extends AppCompatActivity {
 
             if (mode == R.id.navigation_movie){
                 setToMovieFragment();
-            } else {
+            } else if (mode == R.id.navigation_tv_show){
                 setToTvShowFragment();
+            } else if (mode == R.id.navigation_favorite_movie){
+                setToFavoriteMovieFragment();
+            }
+            else {
+                setToFavoriteTvShowFragment();
             }
         } else {
             setToMovieFragment();
@@ -172,11 +177,17 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_favorite_movie:
                     Log.d("Nav", "navigation_favorite_movie");
 
+                    title = "Test Fav Movies";
+                    mode = item.getItemId();
+
                     setToFavoriteMovieFragment();
                     return true;
 
                 case R.id.navigation_favorite_tv_show:
                     Log.d("Nav", "navigation_favorite_tv_show");
+
+                    title = "Test Fav TV Show";
+                    mode = item.getItemId();
 
                     setToFavoriteTvShowFragment();
                     return true;
