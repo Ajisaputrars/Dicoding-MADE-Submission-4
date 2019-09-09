@@ -3,6 +3,7 @@ package com.example.ajisaputrars.madesubmission2.db;
 import android.provider.BaseColumns;
 
 class MovieDatabaseContract {
+
     static final class MovieColumns implements BaseColumns {
         static final String MOVIE_TABLE_NAME = "movie";
 

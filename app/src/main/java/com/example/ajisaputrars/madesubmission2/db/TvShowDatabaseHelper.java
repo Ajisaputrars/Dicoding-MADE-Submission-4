@@ -13,13 +13,16 @@ public class TvShowDatabaseHelper extends SQLiteOpenHelper {
 
     private static final int TV_SHOW_DATABASE_VERSION = 1;
 
-    private static final String SQL_CREATE_TABLE_TV_SHOW = String.format("CREATE TABLE %s"
-                    + " (%s INTEGER PRIMARY KEY AUTOINCREMENT," +
-                    " %s TEXT NOT NULL," +
-                    " %s TEXT NOT NULL," +
-                    " %s TEXT NOT NULL)",
+    private static final String SQL_CREATE_TABLE_TV_SHOW = String.format("CREATE TABLE %s" +
+                    " (%s TEXT NULL," +
+                    " %s TEXT NULL," +
+                    " %s TEXT NULL," +
+                    " %s TEXT NULL," +
+                    " %s TEXT NULL," +
+                    " %s TEXT NULL," +
+                    " %s TEXT NULL)",
             TV_SHOW_TABLE_NAME,
-            TvShowColumns._ID,
+            TvShowColumns.ID,
             TvShowColumns.NAME,
             TvShowColumns.OVERVIEW,
             TvShowColumns.FIRST_AIR_DATE,

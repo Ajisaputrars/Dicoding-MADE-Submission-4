@@ -11,7 +11,7 @@
         android:scaleType="fitXY"
         android:contentDescription="@string/movie_image_description" />
     <TextView
-        android:id="@+id/txt_favorite_movie_name"
+        android:id="@+id/txt_favorite_tv_show_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="26dp"
@@ -20,10 +20,10 @@
         android:textSize="18sp"
         android:textStyle="bold" />
     <TextView
-        android:id="@+id/txt_favorite_movie_description"
+        android:id="@+id/txt_favorite_tv_show_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txt_favorite_movie_name"
+        android:layout_below="@id/txt_favorite_tv_show_name"
         android:layout_marginStart="26dp"
         android:layout_marginTop="10dp"
         android:layout_toEndOf="@id/img_favorite_tv_show_photo"

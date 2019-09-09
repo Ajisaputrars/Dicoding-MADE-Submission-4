@@ -6,13 +6,8 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
-import com.example.ajisaputrars.madesubmission2.model.movie.Movie;
 import com.example.ajisaputrars.madesubmission2.model.tvShow.TvShow;
-
 import java.util.ArrayList;
-
-import static android.provider.BaseColumns._ID;
 import static com.example.ajisaputrars.madesubmission2.db.TvShowDatabaseContract.TvShowColumns.BACKDROP_PATH_STRING;
 import static com.example.ajisaputrars.madesubmission2.db.TvShowDatabaseContract.TvShowColumns.FIRST_AIR_DATE;
 import static com.example.ajisaputrars.madesubmission2.db.TvShowDatabaseContract.TvShowColumns.ID;
@@ -55,20 +50,14 @@ public class TvShowHelper {
             database.close();
     }
 
-    /**
-     * Gunakan method ini untuk ambil semua note yang ada
-     * Otomatis diparsing ke dalam model Note
-     *
-     * @return hasil getAllNotes berbentuk array model note
-     */
-    public ArrayList<TvShow> getAllMovies() {
+    public ArrayList<TvShow> getAllTvShows() {
         ArrayList<TvShow> arrayList = new ArrayList<>();
         Cursor cursor = database.query(DATABASE_TABLE, null,
                 null,
                 null,
                 null,
                 null,
-                _ID + " ASC",
+                ID + " ASC",
                 null);
         cursor.moveToFirst();
         TvShow tvShow;
@@ -92,13 +81,7 @@ public class TvShowHelper {
         return arrayList;
     }
 
-    /**
-     * Gunakan method ini untuk getAllNotes insertNote
-     *
-     * @para m movie model note yang akan dimasukkan
-     * @return id dari data yang baru saja dimasukkan
-     */
-    public long insertMovie(TvShow tvShow) {
+    public long insertTvShow(TvShow tvShow) {
         ContentValues args = new ContentValues();
         args.put(ID, tvShow.getId());
         args.put(NAME, tvShow.getName());
@@ -111,27 +94,7 @@ public class TvShowHelper {
         return database.insert(DATABASE_TABLE, null, args);
     }
 
-    /**
-     * Gunakan method ini untuk getAllNotes updateNote
-     *
-     * @param note model note yang akan diubah
-     * @return int jumlah dari row yang ter-updateNote, jika tidak ada yang diupdate maka nilainya 0
-     */
-//    public int updateNote(Note note) {
-//        ContentValues args = new ContentValues();
-//        args.put(TITLE, note.getTitle());
-//        args.put(DESCRIPTION, note.getDescription());
-//        args.put(DATE, note.getDate());
-//        return database.update(DATABASE_TABLE, args, _ID + "= '" + note.getId() + "'", null);
-//    }
-
-    /**
-     * Gunakan method ini untuk getAllNotes deleteNote
-     *
-     * @param id id yang akan di deleteNote
-     * @return int jumlah row yang di deleteNote
-     */
-    public int deleteNote(int id) {
-        return database.delete(TV_SHOW_TABLE_NAME, _ID + " = '" + id + "'", null);
+    public int deleteTvShow(int id) {
+        return database.delete(TV_SHOW_TABLE_NAME, ID + " = '" + id + "'", null);
     }
 }

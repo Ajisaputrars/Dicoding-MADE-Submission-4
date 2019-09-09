@@ -13,13 +13,17 @@ public class MovieDatabaseHelper extends SQLiteOpenHelper {
 
     private static final int MOVIE_DATABASE_VERSION = 1;
 
-    private static final String SQL_CREATE_TABLE_MOVIE = String.format("CREATE TABLE %s"
-                    + " (%s INTEGER PRIMARY KEY AUTOINCREMENT," +
-                    " %s TEXT NOT NULL," +
-                    " %s TEXT NOT NULL," +
-                    " %s TEXT NOT NULL)",
+    private static final String SQL_CREATE_TABLE_MOVIE = String.format("CREATE TABLE %s" +
+                    " (%s TEXT NULL," +
+                    " %s TEXT NULL," +
+                    " %s TEXT NULL," +
+                    " %s TEXT NULL," +
+                    " %s TEXT NULL," +
+                    " %s TEXT NULL," +
+                    " %s TEXT NULL)",
             MOVIE_TABLE_NAME,
-            MovieColumns._ID,
+//            MovieColumns._ID,
+            MovieColumns.ID,
             MovieColumns.TITLE,
             MovieColumns.OVERVIEW,
             MovieColumns.RELEASE_DATE,

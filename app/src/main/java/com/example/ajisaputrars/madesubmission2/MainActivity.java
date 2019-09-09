@@ -2,7 +2,6 @@ package com.example.ajisaputrars.madesubmission2;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.provider.Settings;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -10,7 +9,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -19,14 +17,10 @@ public class MainActivity extends AppCompatActivity {
     private FragmentTransaction fragmentTransaction;
     private MovieFragment movieFragment;
     private TvShowFragment tvShowFragment;
-
     private FavoriteMovieFragment favoriteMovieFragment;
     private FavoriteTvShowFragment favoriteTvShowFragment;
-
     private String title;
     private final String STATE_TITLE = "state_string";
-    private final String STATE_MOVIE_FRAGMENT = "movie fragment";
-    private final String STATE_TV_SHOW_FRAGMENT = "tv show fragment";
     private final String STATE_MODE = "state_mode";
 
 
@@ -175,18 +169,14 @@ public class MainActivity extends AppCompatActivity {
                     return true;
 
                 case R.id.navigation_favorite_movie:
-                    Log.d("Nav", "navigation_favorite_movie");
-
-                    title = "Test Fav Movies";
+                    title = getResources().getString(R.string.title_favorite_movie);
                     mode = item.getItemId();
 
                     setToFavoriteMovieFragment();
                     return true;
 
                 case R.id.navigation_favorite_tv_show:
-                    Log.d("Nav", "navigation_favorite_tv_show");
-
-                    title = "Test Fav TV Show";
+                    title = getResources().getString(R.string.title_favorite_tv_show);
                     mode = item.getItemId();
 
                     setToFavoriteTvShowFragment();
